@@ -25,6 +25,7 @@ jobs:
         run: |
           ssh root@${{ secrets.SERVER_IP }} <<'EOF'
           cd ./cloud-bot
+          echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin          
           docker stop cb-bot-service || true
           docker rm cb-bot-service || true
           echo "Using Docker image: ${{ secrets.DOCKER_HUB_USERNAME }}/cb-bot-service:${{ inputs.image_tag }}"
