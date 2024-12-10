@@ -49,7 +49,7 @@ public class ShareWorkspaceTest {
         SendMessage response = shareWorkspace.handle(update);
 
         String expectedWorkspaces = String.format(Constants.SHARE_SUCCESS,
-                String.format("%s - ```%s```", workspace1.getName(), workspace1.getWorkspaceId())
+                String.format("%s - %s", workspace1.getName(), workspace1.getWorkspaceId())
         );
 
         assertThat(response.getParameters().get("chat_id")).isEqualTo(1L);

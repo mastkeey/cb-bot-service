@@ -35,7 +35,7 @@ public class ShareWorkspace implements Command {
     public SendMessage handle(Update update) {
         List<WorkspaceResponse> allWorkspace = workspaceService.getAllWorkspace(update.message().from().id());
         String workspaces = allWorkspace.stream()
-                .map(workspace -> String.format("%s - ```%s```", workspace.getName(), workspace.getWorkspaceId().toString()))
+                .map(workspace -> String.format("%s - %s", workspace.getName(), workspace.getWorkspaceId().toString()))
                 .reduce((all, workspace) -> all.concat("\n" + workspace))
                 .orElse("");
         return allWorkspace.isEmpty()
