@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: "TelegramBot"
+
+telegram:
+  token: ${BOT_TOKEN}
+
+cloud:
+  tokenTTL: ${TOKEN_TTL}
+
+api:
+  cloudServiceUrl: ${CB_URL}
+
+server:
+  port: 8090
