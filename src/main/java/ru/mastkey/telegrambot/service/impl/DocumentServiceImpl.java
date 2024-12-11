@@ -17,13 +17,11 @@ import ru.mastkey.telegrambot.model.FileUploadInfo;
 import ru.mastkey.telegrambot.model.KeyboardInfo;
 import ru.mastkey.telegrambot.service.AuthService;
 import ru.mastkey.telegrambot.service.DocumentService;
-import ru.mastkey.telegrambot.util.Constants;
 
 import java.net.URL;
 import java.util.*;
 
-import static ru.mastkey.telegrambot.util.Constants.HEADER_REQUEST_ID;
-import static ru.mastkey.telegrambot.util.Constants.MDC_REQUEST_ID;
+import static ru.mastkey.telegrambot.util.Constants.*;
 
 @Service
 @RequiredArgsConstructor
@@ -40,7 +38,7 @@ public class DocumentServiceImpl implements DocumentService {
         Set<FileUploadInfo> files = fileCache.get(userId, key -> new HashSet<>());
         FileUploadInfo fileUploadInfo = new FileUploadInfo(fileName, file);
         files.remove(fileUploadInfo);
-        if (files.size() == Constants.DEFAULT_FILE_MAX_COUNT) {
+        if (files.size() == DEFAULT_FILE_MAX_COUNT) {
             return files.stream().map(FileUploadInfo::name).toList();
         }
         files.add(fileUploadInfo);

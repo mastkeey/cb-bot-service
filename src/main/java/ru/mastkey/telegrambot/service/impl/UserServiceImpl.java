@@ -3,13 +3,13 @@ package ru.mastkey.telegrambot.service.impl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
-import ru.mastkey.telegrambot.service.AuthService;
-import ru.mastkey.telegrambot.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import ru.mastkey.client.ApiException;
 import ru.mastkey.client.api.UserControllerApi;
 import ru.mastkey.model.CreateUserRequest;
+import ru.mastkey.telegrambot.service.AuthService;
+import ru.mastkey.telegrambot.service.UserService;
 
 import java.util.HashMap;
 import java.util.Map;

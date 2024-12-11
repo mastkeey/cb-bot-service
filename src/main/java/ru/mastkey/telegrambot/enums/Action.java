@@ -9,7 +9,6 @@ public enum Action {
         this.action = action;
     }
 
-
     @Override
     public String toString() {
         return action;
