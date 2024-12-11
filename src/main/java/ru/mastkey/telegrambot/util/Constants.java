@@ -7,8 +7,8 @@ public class Constants {
     public static final int DEFAULT_FILE_CACHE_EXPIRE_TIME = 5;
     public static final int DEFAULT_FILE_MAX_SIZE = 19922944;
     public static final int DEFAULT_FILE_MAX_COUNT = 20;
-    public static final int MAX_WORKSPACE_NAME_LENGTH = 20;
-    public static final int MAX_FILE_NAME_LENGTH = 30;
+    public static final int MAX_WORKSPACE_NAME_LENGTH = 30;
+    public static final int MAX_FILE_NAME_LENGTH = 50;
     public static final String HEADER_REQUEST_ID = "X-Request-ID";
     public static final String MDC_REQUEST_ID = "RequestId";
 
@@ -46,8 +46,8 @@ public class Constants {
     public static final String WAITING_WORKSPACE_UUID_INFORMATION = "Введите UUID рабочего пространства которым с вами поделились";
     public static final String WAITING_WORKSPACE_NAME_TO_CREATE = "Введите название рабочего пространства";
     public static final String WAITING_WORKSPACE_NAME_TO_UPDATE = "Введите новое название";
-    public static final String WORKSPACE_NAME_TOO_LONG = "Длина имени рабочего пространства не должна превышать 40 символов";
-    public static final String FILE_NAME_TOO_LONG = "Длина имени файла с расширением не должна превышать 117 символов";
+    public static final String WORKSPACE_NAME_TOO_LONG = "Длина имени рабочего пространства не должна превышать 30 символов";
+    public static final String FILE_NAME_TOO_LONG = "Длина имени файла с расширением не должна превышать 50 символов";
 
     public static final String INCORRECT_INPUT = "Некорректный ввод, попробуйте снова";
 

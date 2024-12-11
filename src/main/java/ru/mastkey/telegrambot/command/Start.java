@@ -29,14 +29,8 @@ public class Start implements Command {
     @Override
     public SendMessage handle(Update update) {
         HttpStatus result = userService.createUser(update.message().from().id());
-        return result.is2xxSuccessful() ?
-            new SendMessage(update.message().chat().id(), HELLO_MESSAGE)
-                .replyMarkup(
-                    KeyboardUtil.createReplyKeyboard(
-                        CREATE_WORKSPACE_COMMAND,
-                        CONNECT_WORKSPACE_COMMAND
-                    )
-                ) :
-            new SendMessage(update.message().chat().id(), START_FAILED);
+        return result.is2xxSuccessful()
+                ? new SendMessage(update.message().chat().id(), HELLO_MESSAGE)
+                : new SendMessage(update.message().chat().id(), START_FAILED);
     }
 }

@@ -3,16 +3,14 @@ package ru.mastkey.telegrambot.command.workspace;
 import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.request.SendMessage;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+import ru.mastkey.telegrambot.command.Command;
 import ru.mastkey.telegrambot.enums.Action;
 import ru.mastkey.telegrambot.enums.Type;
 import ru.mastkey.telegrambot.model.KeyboardInfo;
-import ru.mastkey.telegrambot.util.Constants;
-import ru.mastkey.telegrambot.util.KeyboardUtil;
 import ru.mastkey.telegrambot.service.WorkspaceService;
-import ru.mastkey.telegrambot.command.Command;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
-
+import ru.mastkey.telegrambot.util.KeyboardUtil;
 
 import java.util.Objects;
 
@@ -39,8 +37,8 @@ public class ChangeWorkspace implements Command {
     public SendMessage handle(Update update) {
         KeyboardInfo workspaceList = workspaceService.getWorkspaceList(
                 update.message().from().id(),
-                Constants.DEFAULT_PAGE_NUMBER,
-                Constants.DEFAULT_PAGE_SIZE
+                DEFAULT_PAGE_NUMBER,
+                DEFAULT_PAGE_SIZE
         );
 
         if (Objects.nonNull(workspaceList) && workspaceList.buttonInfoList().isEmpty()) {

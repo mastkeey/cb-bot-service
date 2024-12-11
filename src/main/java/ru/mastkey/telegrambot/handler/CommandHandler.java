@@ -4,18 +4,19 @@ import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.request.SendMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import ru.mastkey.telegrambot.aop.StructuralLogWithRequestIdFieldAnnotation;
 import ru.mastkey.telegrambot.command.Command;
 import ru.mastkey.telegrambot.command.workspace.ConnectWorkspace;
 import ru.mastkey.telegrambot.command.workspace.CreateWorkspace;
 import ru.mastkey.telegrambot.command.workspace.UpdateWorkspace;
 import ru.mastkey.telegrambot.enums.InputState;
-import ru.mastkey.telegrambot.util.Constants;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+
+import static ru.mastkey.telegrambot.util.Constants.UNKNOWN_COMMAND;
 
 @Slf4j
 @Component
@@ -46,7 +47,7 @@ public class CommandHandler {
             return command.get().handle(update);
         } else {
             log.warn("Unknown command received from user ID: {}", userId);
-            return new SendMessage(update.message().chat().id(), Constants.UNKNOWN_COMMAND);
+            return new SendMessage(update.message().chat().id(), UNKNOWN_COMMAND);
         }
     }
 

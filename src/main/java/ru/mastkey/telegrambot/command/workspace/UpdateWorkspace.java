@@ -3,17 +3,16 @@ package ru.mastkey.telegrambot.command.workspace;
 import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.request.SendMessage;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
+import ru.mastkey.telegrambot.command.Command;
 import ru.mastkey.telegrambot.enums.Action;
 import ru.mastkey.telegrambot.enums.InputState;
 import ru.mastkey.telegrambot.enums.Type;
 import ru.mastkey.telegrambot.model.KeyboardInfo;
-import ru.mastkey.telegrambot.util.Constants;
-import ru.mastkey.telegrambot.util.KeyboardUtil;
 import ru.mastkey.telegrambot.service.WorkspaceService;
-import ru.mastkey.telegrambot.command.Command;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Component;
+import ru.mastkey.telegrambot.util.KeyboardUtil;
 
 import java.util.Map;
 import java.util.Objects;
@@ -32,20 +31,20 @@ public class UpdateWorkspace implements Command {
 
     @Override
     public String getCommand() {
-        return Constants.UPDATE_WORKSPACE_COMMAND;
+        return UPDATE_WORKSPACE_COMMAND;
     }
 
     @Override
     public String getDescription() {
-        return Constants.UPDATE_WORKSPACE_COMMAND_DESCRIPTION;
+        return UPDATE_WORKSPACE_COMMAND_DESCRIPTION;
     }
 
     @Override
     public SendMessage handle(Update update) {
         KeyboardInfo workspaceList = workspaceService.getWorkspaceList(
                 update.message().from().id(),
-                Constants.DEFAULT_PAGE_NUMBER,
-                Constants.DEFAULT_PAGE_SIZE
+                DEFAULT_PAGE_NUMBER,
+                DEFAULT_PAGE_SIZE
         );
 
         if (Objects.nonNull(workspaceList) && workspaceList.buttonInfoList().isEmpty()) {
@@ -53,12 +52,12 @@ public class UpdateWorkspace implements Command {
         }
 
         return Objects.isNull(workspaceList)
-                ? new SendMessage(update.message().chat().id(), Constants.INFORMATION_NOT_FOUND)
+                ? new SendMessage(update.message().chat().id(), INFORMATION_NOT_FOUND)
                 : new SendMessage(
                 update.message().chat().id(),
-                Constants.CHOOSE_WORKSPACE_TO_UPDATE
+                CHOOSE_WORKSPACE_TO_UPDATE
         ).replyMarkup(KeyboardUtil.createKeyboard(
-                workspaceList.buttonInfoList(), Constants.DEFAULT_PAGE_NUMBER, workspaceList.pageTotal(), Type.WORKSPACE, Action.UPDATE
+                workspaceList.buttonInfoList(), DEFAULT_PAGE_NUMBER, workspaceList.pageTotal(), Type.WORKSPACE, Action.UPDATE
         ));
     }
 
@@ -76,9 +75,9 @@ public class UpdateWorkspace implements Command {
         );
         if (result.is2xxSuccessful()) {
             currentWorkspaceToUpdateName.remove(update.message().from().id());
-            return new SendMessage(update.message().chat().id(), Constants.UPDATE_SUCCESS);
+            return new SendMessage(update.message().chat().id(), UPDATE_SUCCESS);
         } else {
-            return new SendMessage(update.message().chat().id(), Constants.UPDATE_FAILED);
+            return new SendMessage(update.message().chat().id(), UPDATE_FAILED);
         }
 
     }

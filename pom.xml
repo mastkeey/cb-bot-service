@@ -146,7 +146,6 @@
                     <append>true</append>
                     <excludes>
                         <exclude>ru/mastkey/telegrambot/configuration/**</exclude>
-                        <exclude>ru/mastkey/telegrambot/aop/**</exclude>
                         <exclude>ru/mastkey/telegrambot/model/**</exclude>
                         <exclude>ru/mastkey/telegrambot/enums/**</exclude>
                         <exclude>**/TelegramBotApplication.class</exclude>
