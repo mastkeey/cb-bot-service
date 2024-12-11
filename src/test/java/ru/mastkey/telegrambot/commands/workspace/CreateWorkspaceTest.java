@@ -80,6 +80,6 @@ public class CreateWorkspaceTest {
         SendMessage response = createWorkspace.create(update);
 
         assertThat(response.getParameters().get("chat_id")).isEqualTo(1L);
-        assertThat(response.getParameters().get("text")).isEqualTo("Длина имени рабочего пространства не должна превышать 40 символов");
+        assertThat(response.getParameters().get("text")).isEqualTo("Длина имени рабочего пространства не должна превышать 30 символов");
     }
 }
