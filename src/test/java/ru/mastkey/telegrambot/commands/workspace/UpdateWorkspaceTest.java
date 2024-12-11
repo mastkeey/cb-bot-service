@@ -95,7 +95,7 @@ public class UpdateWorkspaceTest {
         SendMessage response = updateWorkspace.updateName(update);
 
         assertThat(response.getParameters().get("chat_id")).isEqualTo(1L);
-        assertThat(response.getParameters().get("text")).isEqualTo("Длина имени рабочего пространства не должна превышать 40 символов");
+        assertThat(response.getParameters().get("text")).isEqualTo("Длина имени рабочего пространства не должна превышать 30 символов");
     }
 
     @AfterEach
