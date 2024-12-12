@@ -37,6 +37,11 @@ public class DeleteFile implements Command {
 
     @Override
     public SendMessage handle(Update update) {
+        var userId = update.message().from().id();
+        if (currentWorkspace.get(userId) == null) {
+            return new SendMessage(update.message().chat().id(), NO_CURRENT_WORKSPACE);
+        }
+
         KeyboardInfo documentList = documentService.getFileList(
                 update.message().from().id(),
                 currentWorkspace.get(update.message().from().id()),

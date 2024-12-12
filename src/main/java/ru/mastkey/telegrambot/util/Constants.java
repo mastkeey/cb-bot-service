@@ -36,6 +36,7 @@ public class Constants {
 
     public static final String INFORMATION_NOT_FOUND = "Не удалось получить информацию";
     public static final String FILE_LIST_NOT_FOUND = "Не удалось получить список файлов";
+    public static final String NO_CURRENT_WORKSPACE = "У вас не выбрано рабочее пространство. Выберите его через /change";
 
     public static final String CHOOSE_FILE_TO_DELETE = "Выбери файл который хочешь удалить";
     public static final String CHOOSE_FILE_TO_GET = "Выбери файл который хочешь получить";
