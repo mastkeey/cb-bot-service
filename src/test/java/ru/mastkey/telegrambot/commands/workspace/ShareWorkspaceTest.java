@@ -63,6 +63,6 @@ public class ShareWorkspaceTest {
         SendMessage response = shareWorkspace.handle(update);
 
         assertThat(response.getParameters().get("chat_id")).isEqualTo(1L);
-        assertThat(response.getParameters().get("text")).isEqualTo("Не удалось получить информацию");
+        assertThat(response.getParameters().get("text")).isEqualTo("У вас отсутствуют рабочие пространства");
     }
 }

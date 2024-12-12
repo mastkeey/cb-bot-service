@@ -88,6 +88,6 @@ public class DownloadFileTest {
         SendMessage response = downloadFile.handle(update);
 
         assertThat(response.getParameters().get("chat_id")).isEqualTo(1L);
-        assertThat(response.getParameters().get("text")).isEqualTo("Не удалось получить список файлов");
+        assertThat(response.getParameters().get("text")).isEqualTo("У вас не выбрано рабочее пространство. Выберите его через /change");
     }
 }

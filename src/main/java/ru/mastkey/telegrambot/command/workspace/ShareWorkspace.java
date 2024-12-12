@@ -3,12 +3,11 @@ package ru.mastkey.telegrambot.command.workspace;
 import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.request.SendMessage;
 import lombok.RequiredArgsConstructor;
-import ru.mastkey.telegrambot.command.Command;
-import ru.mastkey.telegrambot.service.WorkspaceService;
-import ru.mastkey.telegrambot.util.Constants;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import ru.mastkey.model.WorkspaceResponse;
+import ru.mastkey.telegrambot.command.Command;
+import ru.mastkey.telegrambot.service.WorkspaceService;
 
 import java.util.List;
 
@@ -39,7 +38,7 @@ public class ShareWorkspace implements Command {
                 .reduce((all, workspace) -> all.concat("\n" + workspace))
                 .orElse("");
         return allWorkspace.isEmpty()
-                ? new SendMessage(update.message().chat().id(), INFORMATION_NOT_FOUND)
+                ? new SendMessage(update.message().chat().id(), EMPTY_WORKSPACES)
                 : new SendMessage(update.message().chat().id(), String.format(SHARE_SUCCESS, workspaces));
 
     }
